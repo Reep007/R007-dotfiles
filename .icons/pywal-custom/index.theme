@@ -1,0 +1,9 @@
+[Icon Theme]
+Name=Pywal Custom
+Comment=Custom pywal icon theme
+Directories=scalable/places
+
+[scalable/places]
+Size=48
+Type=Scalable
+Context=Places

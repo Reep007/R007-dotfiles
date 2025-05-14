@@ -1,0 +1,454 @@
+@import url("/home/neo/.cache/wal/colors-waybar.css");
+@import url("theme.css");
+@import url("colors.css");
+
+
+
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+
+/* <<--< Main Background >-->> */
+
+window#waybar > box {
+  background-color: rgba(15, 14, 22, 0.9);
+  margin: 0px;
+}
+
+/* <<--< Drop Shadow >-->> */
+
+window#waybar {
+  background: rgba(15, 14, 22, 0.0);
+}
+
+/* <<--< Tooltip >-->> */
+
+tooltip {
+  background: @color8;
+  border: solid;
+  border-width: 1.5px;
+  border-radius: 10px;
+  border-color: @color2;
+}
+tooltip label {
+  color: @color4;
+  font-weight: normal;
+  margin: -1.5px 4px;
+}
+
+/* <<--< Workspace Buttons >-->> */
+
+#workspaces button {
+  color: @color6;
+  border-radius: 8px;
+  box-shadow: none;
+  margin: 1px 0;
+  padding: 0 4px;
+  transition: none;
+}
+#workspaces button:hover {
+  color: @color6;
+  background: rgba(15, 14, 22, 0.8);
+  text-shadow: none;
+}
+#workspaces button.active {
+  color: @foreground;
+  background: @color4;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin: 1px;
+  padding: 0 2px;
+}
+
+/* <<--< General >-->> */
+
+#custom-ws,
+workspaces,
+#window,
+#custom-cpuinfo,
+memory,
+cpu,
+#idle_inhibitor,
+clock,
+#custom-wifi,
+#bluetooth,
+#custom-update,      
+#mpris,
+pulseaudio,
+#backlight,
+#battery,
+#custom-power {
+  opacity: 3;
+  color: @color5;
+  padding: 0 10.5px;
+}
+
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8 {
+  margin-bottom: 0;
+  text-shadow: -2px 0 2px rgba(0, 0, 0, 0.0);
+}
+
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5 {
+  margin-bottom: 0;
+  padding-right: 2px;
+  text-shadow: 3px 0 3px rgba(0, 0, 0, 0.0);
+}
+
+/* <<--< Modules >-->> */
+
+/* Window Icon */
+
+#custom-ws {
+  background: @color111;
+}
+#custom-ws:hover {
+  color: @color4;
+}
+
+/* Workspaces */
+
+#custom-left1 {
+  color: @color1;
+  background:  rgba(15, 14, 22, 0.0);
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+#workspaces {
+  background: @color1;
+}
+#custom-right1 {
+  color: @color1;
+  background: rgba(15, 14, 22, 0.0);
+  text-shadow: 2px 0 2px rgba(0, 0, 0, 0.0);
+  margin-bottom: 0;
+}
+
+/* Temperature */
+
+#custom-paddc {
+  padding-right: 450px;
+}
+#custom-left2 {
+  color: rgba(15, 14, 22, 0.0);
+  background: rgba(15, 14, 22, 0.0);
+  padding-left: 100px;
+}
+#custom-cpuinfo {
+  background: rgba(15, 14, 22, 0.0);
+  padding-left: 1px;
+  padding-right: 0;
+}
+
+/* Memory */
+
+#custom-left3 {
+  color: @color1;
+  background: rgba(15, 14, 22, 0.0);
+  padding-left: 1px;
+}
+#memory {
+  background: @color1;
+  padding-left: 1px;
+  padding-right: 0;
+}
+
+/* CPU */
+
+#custom-left4 {
+  color: @color4;
+  background: @color1;
+  padding-left: 3px;
+}
+#cpu {
+  background: @color4;
+}
+#custom-leftin1 {
+  color: @color4;
+  margin-bottom: -1px;
+}
+
+/* Distro Icon */
+
+#custom-left5 {
+  color: @color3;
+  background:   rgba(15, 14, 22, 0.0);
+  text-shadow: none;
+  margin-bottom: -1px;
+  padding-left: 4px;
+}
+#custom-distro {
+  color: rgba(15, 14, 22, 0.9);
+  background: @color3;
+  margin: -1 -1px -1px 0;
+  padding: 0 0 0 2px;
+  text-shadow: 0 0 1.5px rgba(0, 0, 0, 9);
+  font-size: 10px;
+  font-weight: bold;
+}
+#custom-right2 {
+  color: @color3;
+  background: rgba(15, 14, 22, 0.0);
+  text-shadow: none;
+  margin-bottom: -1px;
+}
+
+/* Time */
+
+#custom-rightin1 {
+  color: @color4;
+  margin-bottom: -1px;
+}
+#idle_inhibitor {
+  background: @color4;
+  margin-right: -1px;
+  padding: 0 0 0 7px;
+}
+#idle_inhibitor:hover {
+  color: @color4;
+}
+#clock.time {
+  background: @color4;
+  padding: 0 3px 0 0;
+}
+#custom-right3 {
+  color: @color4;
+  background: @color1;
+}
+
+/* Date */
+
+#clock.date {
+  background: @color1;
+}
+#clock.date:hover {
+  color: @color2;
+}
+#custom-right4 {
+  color: @color1;
+  background: rgba(15, 14, 22, 0.0);
+}
+
+/* Tray */
+
+#custom-network {
+  padding-left: 100px;
+  padding-right: 20px;
+  color: @color7;
+  background: rgba(15, 14, 22, 0.0);
+}
+#custom-network:hover {
+  color: @color4;
+}
+
+#bluetooth {
+  padding-right: 20px;
+  color: @color4;
+  background: rgba(15, 14, 22, 0.0);
+}
+#bluetooth:hover {
+  color: @color2;
+}
+
+#custom-update {
+  padding-right: 40px;
+  color: @color4;
+  background: rgba(15, 14, 22, 0.0);
+}
+#custom-update:hover {
+  color: @color2;
+}
+
+#custom-left9 {
+   padding: 0 10px;
+   border-radius: 20px;
+   padding-left: 15px;
+   color:  @color1;
+   background: rgba(15, 14, 22, 0.2);
+}
+#custom-left9:hover {
+    background: @background;
+    color: @color7;
+}
+#custom-right5 {
+  color: rgba(15, 14, 22, 0.0);
+  background: rgba(15, 14, 22, 0.0);
+}
+
+/* Media Info */
+
+#left9 {
+  color: @color1; /* Change to desired color */
+}
+
+#left9:hover {
+  color: @color7; /* Change hover color */
+}
+
+
+#mpris {
+  font-weight: normal;
+  background-color: @color111;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+#mpris:hover {
+  color: @color111;
+}
+
+/* Output Device */
+
+#custom-left6 {
+  color: @color1;
+  background: rgba(15, 14, 22, 0.0);
+  padding-left: 0px;
+}
+#pulseaudio {
+  background: @color1;
+}
+#pulseaudio:hover {
+  color: @color4;
+}
+
+/* Brightness */
+
+#custom-left7 {
+  color: @color3;
+  background: @color1;
+  padding-left: 2px;
+}
+#backlight {
+  background: @color6;
+}
+
+/* Battery */
+
+#custom-left8 {
+  color: @color4;
+  background: @color3;
+  padding-left: 2px;
+}
+#battery {
+  color: @color4;
+  background: rgba(15, 14, 22, 0.0);
+}
+#battery.warning {
+  color: @warning;
+}
+#battery.critical {
+  color: @critical;
+}
+#battery.charging {
+  color: @color4;
+}
+
+/* Power Button */
+
+#custom-leftin2 {
+  color: @color4;
+  background: rgba(15, 14, 22, 0.0);
+  margin-bottom: -1px;
+}
+#custom-power {
+  color: @color7;
+  background: @color5;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.0);
+  box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.0);
+  border-radius: 9.5px;
+  margin: 0px 0px 0px 0;
+  padding: 2 8px 2 10px;
+}
+#custom-power:hover {
+  color: @color4;
+  background: @color1;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+/* <<--< FONT SIZES >-->> */
+
+/*
+  Font sizes for modules and dividers can be problematic.
+  By problematic, I mean they may not align properly
+  when using only whole numbers.
+
+  If you wish to change them, consider adjusting only
+  the whole numbers and keeping the decimals as they are,
+  unless you know what you're doing.
+*/
+
+/* workspace icon and buttons, window and media title */
+* {
+  font-size: 11px;
+}
+
+/* left and right arrows */
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8,
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5 {
+  font-size: 15.5px;
+}
+
+/* left and right inverse */
+#custom-leftin1,
+#custom-leftin2,
+#custom-rightin1 {
+  font-size: 15.6px;
+}
+
+/* distro icon */
+#custom-distro {
+  font-size: 16px;
+}
+
+/* distro arrows override */
+#custom-left5,
+#custom-right2 {
+  font-size: 14.5px;
+}
+
+/*
+  NOTE: If none of your changes are taking effect,
+  they may be overridden by the font sizes set in
+  `animation.css`.
+
+  If so, copy your new font sizes from this file
+  and paste them into the corresponding
+  `*_expand` keyframes.
+
+  For example, if you change the font size of the
+  distro icon, you should also update it in
+  `distro_expand`.
+
+  - `distro_expand` for the distro icon (line 143)
+  - `power_expand` for the power button (line 158)
+  - `module_expand` for all other modules (line 172)
+*/
+

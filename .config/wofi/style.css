@@ -1,0 +1,73 @@
+@define-color background #040D19;
+@define-color foreground #a2c4e7;
+@define-color accent #3166A4;
+@define-color urgent #3166A4;
+
+window {
+    margin: 20px;
+    border: 1px solid @accent;
+    border-radius: 25px;
+    background-image: url("file:///home/neo/Wallpaper/wall2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    padding: 5px;
+}
+
+#input {
+    margin: 40px 20px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgba(26, 26, 26, 0.6);
+    color: @foreground;
+    border: none;
+}
+
+#entry {
+    margin: 5px 5px;
+    padding: 1px;
+    border-radius: 20px;
+    background-color: rgba(45, 45, 45, 0.0);
+    color: @foreground;
+}
+
+#entry:selected {
+    background-color: @accent;
+    color: @foreground;
+    border: none;
+    outline: none;
+}
+
+#entry flowboxchild {
+    min-width: 100px;
+}
+
+#scroll {
+    margin: 25px;
+}
+
+#text {
+    color: @foreground;
+}
+
+#text:selected {
+    background-color: transparent;
+    color: @background;
+    border: none;
+    outline: none;
+}
+
+#img {
+    background-color: transparent;
+    padding: 2px;
+    margin: 2px;
+}
+
+#img:selected {
+    background-color: transparent;
+    color: @foreground;
+}
