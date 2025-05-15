@@ -1,0 +1,207 @@
+#!/bin/bash
+
+# Folder containing your wallpapers
+WALLPAPER_DIR="$HOME/Wallpaper"
+
+
+# File to store the current index
+INDEX_FILE="$HOME/.cache/wallpaper_index"
+
+# Get list of wallpapers (sorted numerically)
+WALLPAPERS=($(ls -1v "$WALLPAPER_DIR"/wall[0-9]* | grep -E 'wall[0-9]+\.(jpg|png)'))
+
+# Total number of wallpapers
+TOTAL=${#WALLPAPERS[@]}
+
+# Check if a wallpaper path is provided as an argument
+if [[ -n "$1" && -f "$1" ]]; then
+    WALLPAPER="$1"
+    # Find the index of the provided wallpaper (if it exists in WALLPAPERS)
+    INDEX=0
+    for i in "${!WALLPAPERS[@]}"; do
+        if [[ "${WALLPAPERS[$i]}" == "$WALLPAPER" ]]; then
+            INDEX=$((i + 1))
+            break
+        fi
+    done
+    # If not found, set index to 0 (or next logical index)
+    if [[ $INDEX -eq 0 ]]; then
+        INDEX=0
+    fi
+else
+    # Read current index or default to 0
+    if [[ -f "$INDEX_FILE" ]]; then
+        INDEX=$(cat "$INDEX_FILE")
+    else
+        INDEX=0
+    fi
+    # Select the wallpaper
+    WALLPAPER="${WALLPAPERS[$INDEX]}"
+    # Increment index for next run, wrap around if needed
+    ((INDEX=INDEX+1))
+    if [[ $INDEX -ge $TOTAL ]]; then
+        INDEX=0
+    fi
+fi
+
+# Save new index
+echo "$INDEX" > "$INDEX_FILE"
+
+# Debugging: Print selected wallpaper
+echo "Selected wallpaper: $WALLPAPER" >&2
+
+
+# Backup the current hyprpaper.conf file
+cp ~/.config/hypr/hyprpaper.conf ~/.config/hypr/hyprpaper.conf.bak
+
+# Update the wallpaper and monitor in the configuration file
+sed -i "s|^monitor =.*|monitor = Virtual-1|" ~/.config/hypr/hyprpaper.conf
+
+# Generate the Hyprpaper config with preload and wallpaper settings
+echo "preload = $WALLPAPER" > ~/.config/hypr/hyprpaper.conf
+echo "wallpaper = ,$WALLPAPER" >> ~/.config/hypr/hyprpaper.conf
+
+# Restart Hyprpaper to apply changes
+pkill hyprpaper
+hyprpaper &
+
+# Apply the Pywal colors based on the new wallpaper, skip export to avoid errors
+wal -i "$WALLPAPER" -e
+
+~/update_pywal_icons.sh
+xfconf-query -c xsettings -p /Net/IconThemeName -s pywal-custom
+gsettings set org.gnome.desktop.interface icon-theme 'pywal-custom'
+
+# Customize Thunar's color layout in colors-oomox
+source ~/.cache/wal/colors.sh  # Load Pywal colors as variables
+sed -i "s/BG=.*/BG=${color5:1}/" ~/.cache/wal/colors-oomox        # Light blue background
+sed -i "s/FG=.*/FG=${color0:1}/" ~/.cache/wal/colors-oomox        # Dark text
+sed -i "s/MENU_BG=.*/MENU_BG=${color5:1}/" ~/.cache/wal/colors-oomox  # Match menu to background
+sed -i "s/MENU_FG=.*/MENU_FG=${color0:1}/" ~/.cache/wal/colors-oomox  # Dark menu text
+sed -i "s/SEL_BG=.*/SEL_BG=${color4:1}/" ~/.cache/wal/colors-oomox    # Mid-blue selection
+sed -i "s/SEL_FG=.*/SEL_FG=${color7:1}/" ~/.cache/wal/colors-oomox    # Light selection text
+sed -i "s/TXT_BG=.*/TXT_BG=${color5:1}/" ~/.cache/wal/colors-oomox    # Match text area to background
+sed -i "s/TXT_FG=.*/TXT_FG=${color0:1}/" ~/.cache/wal/colors-oomox    # Dark text area text
+sed -i "s/BTN_BG=.*/BTN_BG=${color6:1}/" ~/.cache/wal/colors-oomox    # Bright blue buttons
+sed -i "s/BTN_FG=.*/BTN_FG=${color0:1}/" ~/.cache/wal/colors-oomox    # Dark button text
+sed -i "s/HDR_BTN_BG=.*/HDR_BTN_BG=${color3:1}/" ~/.cache/wal/colors-oomox  # Mid-blue header buttons
+sed -i "s/HDR_BTN_FG=.*/HDR_BTN_FG=${color7:1}/" ~/.cache/wal/colors-oomox  # Light header text
+
+# Export colors to Waybar config (unchanged)
+cat ~/.cache/wal/colors-waybar.css > ~/.config/waybar/colors.css
+
+# Generate and apply the GTK theme for Thunar
+oomox-cli -o oomox-xresources ~/.cache/wal/colors-oomox
+gsettings set org.gnome.desktop.interface gtk-theme "oomox-xresources"
+
+# Reload Waybar and Thunar
+pkill waybar && waybar &
+pkill thunar && thunar &
+
+# Run the update_posh_theme.sh script to update the prompt theme
+~/bin/update_posh_theme.sh
+
+# Update Hyprland borders (unchanged)
+source ~/.cache/wal/colors.sh
+sed -i '/col.active_border/c\    col.active_border = rgba('"${color2:1}"'ff) rgba('"${color6:1}"'ff) 35deg' ~/.config/hypr/hyprland.conf
+sed -i '/col.inactive_border/c\    col.inactive_border = rgba('"${color8:1}"'ff) 45deg' ~/.config/hypr/hyprland.conf
+
+
+# wofi update
+mkdir -p ~/.config/wofi
+source ~/.cache/wal/colors.sh
+cat > ~/.config/wofi/style.css << EOL
+@define-color background #000000;
+@define-color foreground #9fcadb;
+@define-color accent #33435A;
+@define-color urgent #33435A;
+
+window {
+    margin: 20px;
+    border: 0px solid @accent;
+    border-radius: 25px;
+    background-image: url("file://$WALLPAPER");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, 0.8); /* Fallback for stability */
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    padding: 5px;
+}
+
+#input {
+    margin: 5px 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(26, 26, 26, 0.0);
+    color: @foreground;
+    border: none;
+}
+
+#entry {
+    margin: 5px 5px;
+    padding: 2px; /* Reduced to avoid size issues */
+    border-radius: 15px;
+    background-color: rgba(45, 45, 45, 0.0);
+    color: @foreground;
+}
+
+#entry:selected {
+    background-color: @accent; /* #2B539D */
+    color: @foreground;       /* #9fcadb */
+    border: none;
+    outline: none;
+}
+
+#entry flowboxchild {
+    min-width: 100px; /* Two-column layout */
+}
+
+#scroll {
+    margin: 25px;
+}
+
+#text {
+    color: @foreground;
+}
+
+#text:selected {
+    background-color: transparent;
+    color: @background; /* #9fcadb */
+    border: none;
+    outline: none;
+}
+
+#img {
+    background-color: transparent;
+    padding: 2px;
+    margin: 2px;
+}
+
+#img:selected {
+    background-color: transparent;
+    color: @foreground; /* #9fcadb */
+}
+
+EOL
+
+
+
+# Set custom folder icons
+gio set "$HOME/Documents" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-documents.svg"
+gio set "$HOME/Downloads" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-downloads.svg"
+gio set "$HOME/Pictures" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-pictures.svg"
+gio set "$HOME/Music" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-music.svg"
+gio set "$HOME/Videos" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-videos.svg"
+gio set "$HOME/Templates" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-templates.svg"
+gio set "$HOME/Public" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-publicshare.svg"
+gio set "$HOME/Desktop" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-desktop.svg"
+
+
+# Reload Hyprland config
+hyprctl reload
+
+# Refresh the shell config
+source ~/.zshrc
