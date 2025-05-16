@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/neo/Wallpaper/wall7.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#040408",
+        "foreground": "#cfdfee",
+        "cursor": "#cfdfee"
+    },
+    "colors": {
+        "color0": "#040408",
+        "color1": "#4B4A42",
+        "color2": "#1D639B",
+        "color3": "#2C6FAC",
+        "color4": "#538AB3",
+        "color5": "#2B90E6",
+        "color6": "#5DA5EA",
+        "color7": "#cfdfee",
+        "color8": "#909ca6",
+        "color9": "#4B4A42",
+        "color10": "#1D639B",
+        "color11": "#2C6FAC",
+        "color12": "#538AB3",
+        "color13": "#2B90E6",
+        "color14": "#5DA5EA",
+        "color15": "#cfdfee"
+    }
+}

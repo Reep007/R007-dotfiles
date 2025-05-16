@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/neo/Wallpaper/grildrinking.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0A1311",
+        "foreground": "#e6e6e6",
+        "cursor": "#e6e6e6"
+    },
+    "colors": {
+        "color0": "#0A1311",
+        "color1": "#926B67",
+        "color2": "#76888D",
+        "color3": "#848080",
+        "color4": "#A2A1A1",
+        "color5": "#C2BBBA",
+        "color6": "#D0D1D1",
+        "color7": "#e6e6e6",
+        "color8": "#a1a1a1",
+        "color9": "#926B67",
+        "color10": "#76888D",
+        "color11": "#848080",
+        "color12": "#A2A1A1",
+        "color13": "#C2BBBA",
+        "color14": "#D0D1D1",
+        "color15": "#e6e6e6"
+    }
+}

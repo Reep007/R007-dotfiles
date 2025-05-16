@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/neo/Wallpaper/DeadPool.png",
+    "alpha": "100",
+    "special": {
+        "background": "#0F0C10",
+        "foreground": "#f3a5a1",
+        "cursor": "#f3a5a1"
+    },
+    "colors": {
+        "color0": "#0F0C10",
+        "color1": "#593A4E",
+        "color2": "#5B4462",
+        "color3": "#9A0D12",
+        "color4": "#E9242C",
+        "color5": "#9A354E",
+        "color6": "#CE4050",
+        "color7": "#f3a5a1",
+        "color8": "#aa7370",
+        "color9": "#593A4E",
+        "color10": "#5B4462",
+        "color11": "#9A0D12",
+        "color12": "#E9242C",
+        "color13": "#9A354E",
+        "color14": "#CE4050",
+        "color15": "#f3a5a1"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/neo/Wallpaper/Batman.png",
+    "alpha": "100",
+    "special": {
+        "background": "#0C0D12",
+        "foreground": "#adbfd9",
+        "cursor": "#adbfd9"
+    },
+    "colors": {
+        "color0": "#0C0D12",
+        "color1": "#204566",
+        "color2": "#2E496D",
+        "color3": "#4C495E",
+        "color4": "#245B94",
+        "color5": "#4B6A9A",
+        "color6": "#116DC0",
+        "color7": "#adbfd9",
+        "color8": "#798597",
+        "color9": "#204566",
+        "color10": "#2E496D",
+        "color11": "#4C495E",
+        "color12": "#245B94",
+        "color13": "#4B6A9A",
+        "color14": "#116DC0",
+        "color15": "#adbfd9"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/neo/Pictures/88-girl.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#0D0E16",
+        "foreground": "#9ec3cb",
+        "cursor": "#9ec3cb"
+    },
+    "colors": {
+        "color0": "#0D0E16",
+        "color1": "#192863",
+        "color2": "#453A55",
+        "color3": "#225165",
+        "color4": "#56556A",
+        "color5": "#334CA1",
+        "color6": "#526596",
+        "color7": "#9ec3cb",
+        "color8": "#6e888e",
+        "color9": "#192863",
+        "color10": "#453A55",
+        "color11": "#225165",
+        "color12": "#56556A",
+        "color13": "#334CA1",
+        "color14": "#526596",
+        "color15": "#9ec3cb"
+    }
+}
