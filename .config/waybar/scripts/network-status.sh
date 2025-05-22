@@ -11,7 +11,7 @@ if [[ -n "$eth_interface" ]]; then
     eth_ip=$(nmcli -t -f IP4.ADDRESS device show "$eth_interface" | cut -d: -f2 | head -n1)
     eth_conn=$(nmcli -t -f GENERAL.CONNECTION device show "$eth_interface" | cut -d: -f2)
     if [[ "$eth_status" =~ "connected" && -n "$eth_conn" ]]; then
-        output="{\"text\": \"󰈁 $eth_conn ($eth_ip)\", \"class\": \"connected\"}"
+        output="{\"text\": \"󰒒 󰩃  \", \"class\": \"connected\"}"
         echo "$output" >> "$LOGFILE"
         echo "$output"
         exit 0

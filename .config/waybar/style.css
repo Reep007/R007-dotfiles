@@ -149,7 +149,7 @@ pulseaudio,
 #custom-left2 {
   color: rgba(15, 14, 22, 0.0);
   background: rgba(15, 14, 22, 0.0);
-  padding-left: 100px;
+  padding-left: 10px;
 }
 #custom-cpuinfo {
   background: rgba(15, 14, 22, 0.0);
@@ -249,7 +249,7 @@ pulseaudio,
 /* Tray */
 
 #custom-network {
-  padding-left: 100px;
+  padding-left: 250px;
   padding-right: 20px;
   color: @color7;
   background: rgba(15, 14, 22, 0.0);

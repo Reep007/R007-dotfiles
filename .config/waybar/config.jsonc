@@ -68,15 +68,6 @@
   // <<--< Modules >-->>
  
 
-  "custom/ws": {
-    "exec": "~/.config/waybar/scripts/current-theme.sh",
-    "return-type": "json",
-    "format": " 󰍜 ",
-    "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
-    "min-length": 3,
-    "max-length": 3
-  },
-
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "on-scroll-down": "hyprctl dispatch workspace +1",
@@ -160,7 +151,7 @@
       "vesktop": 
         "<span foreground='#8aadf4'> </span> Discord",
 
-      "• Discord(.*)": "Discord$1",
+     
       "(.*)Discord(.*)": 
         "<span foreground='#8aadf4'> </span> $1Discord$2",
 
@@ -270,10 +261,10 @@
  "custom/network": {
     "exec": "~/.config/waybar/scripts/network-status.sh",
     "return-type": "json",
-    "format": "{text}",
+    "format": "{}",
     "on-click": "~/.config/waybar/scripts/network_manager_gui.py",    
     "on-click-right": "kitty --title '󰒄 Network Manager TUI' nmtui",
-    "interval": 1,
+    "interval": 5,
     "min-length": 1,
     "max-length": 50
   },
@@ -288,6 +279,7 @@
       "{num_connections} connected",
     "tooltip-format-disabled": 
       "Bluetooth Disabled",
+
     "tooltip-format-connected": 
       "{num_connections} connected\n{device_enumerate}",
     "tooltip-format-enumerate-connected": 
@@ -341,6 +333,7 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 {volume}%",
+    "on-click-right": "pavucontrol",   
 
     "format-icons": {
       "default": ["󰕿", "󰖀", "󰕾"],
