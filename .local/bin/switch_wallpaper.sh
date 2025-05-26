@@ -116,6 +116,7 @@ oomox-cli -o oomox-xresources ~/.cache/wal/colors-oomox 2>/dev/null
 gsettings set org.gnome.desktop.interface gtk-theme "oomox-xresources" 2>/dev/null
 echo "$(date): GTK theme applied" >> "$LOGFILE"
 
+
 # Refresh Thunar if running
 if pgrep -u $USER thunar >/dev/null; then
     pkill -u $USER -HUP thunar 2>/dev/null || true
@@ -227,7 +228,7 @@ fi
 
 # Set custom folder icons
 gio set "$HOME/Documents" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-documents.svg" 2>/dev/null
-gio set "$HOME/Downloads" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-downloads.svg" 2>/dev/null
+gio set "$HOME/Downloads" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-download.svg" 2>/dev/null
 gio set "$HOME/Pictures" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-pictures.svg" 2>/dev/null
 gio set "$HOME/Music" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-music.svg" 2>/dev/null
 gio set "$HOME/Videos" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-videos.svg" 2>/dev/null
@@ -236,9 +237,25 @@ gio set "$HOME/Public" metadata::custom-icon "file:///home/neo/.icons/pywal-cust
 gio set "$HOME/Desktop" metadata::custom-icon "file:///home/neo/.icons/pywal-custom/scalable/places/folder-desktop.svg" 2>/dev/null
 echo "$(date): Folder icons updated" >> "$LOGFILE"
 
+# reload Obsidian
+~/.config/obsidian-pywal/update.sh
+
 # Reload Hyprland config
 hyprctl reload 2>/dev/null
 echo "$(date): Hyprland config reloaded" >> "$LOGFILE"
+
+# Generate and apply GTK theme uncommom # if background color not black
+# oomox-cli -o oomox-xresources ~/.cache/wal/colors-oomox >> "$LOGFILE" 2>&1
+# gsettings set org.gnome.desktop.interface gtk-theme "oomox-xresources" 2>/dev/null
+
+# Link GTK4 theme
+mkdir -p ~/.config/gtk-4.0
+ln -sf ~/.themes/oomox-xresources/gtk-4.0 ~/.config/gtk-4.0
+
+echo "$(date): GTK theme applied (GTK2/3/4)" >> "$LOGFILE"
+
+
+
 
 # Ensure script exits with 0 if wallpaper was applied
 echo "$(date): Script completed" >> "$LOGFILE"
