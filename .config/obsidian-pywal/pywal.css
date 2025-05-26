@@ -1,0 +1,24 @@
+/* Pywal + Obsidian integration */
+.theme-dark {
+  --background-primary:     #1e1e1e;
+  --background-secondary:   #2e2e2e;
+  --background-modifier:    #44475a;
+  --text-normal:            #f8f8f2;
+  --text-muted:             #6272a4;
+  --text-accent:            #ff79c6;
+  --highlight-accent:       #bd93f9;
+  --interactive-accent:     #50fa7b;
+  --interactive-hover:      #8be9fd;
+}
+# Overwrite colors dynamically from wal
+colors=($(< ~/.cache/wal/colors))
+
+sed -i "s/#1e1e1e/${colors[0]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#2e2e2e/${colors[1]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#44475a/${colors[2]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#f8f8f2/${colors[7]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#6272a4/${colors[5]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#ff79c6/${colors[3]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#bd93f9/${colors[4]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#50fa7b/${colors[6]}/" ~/.config/obsidian-pywal/pywal.css
+sed -i "s/#8be9fd/${colors[8]}/" ~/.config/obsidian-pywal/pywal.css

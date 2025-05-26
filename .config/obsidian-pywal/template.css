@@ -1,0 +1,12 @@
+/* Pywal + Obsidian integration */
+.theme-dark {
+  --background-primary:     #1e1e1e;
+  --background-secondary:   #2e2e2e;
+  --background-modifier:    #44475a;
+  --text-normal:            #f8f8f2;
+  --text-muted:             #6272a4;
+  --text-accent:            #ff79c6;
+  --highlight-accent:       #bd93f9;
+  --interactive-accent:     #50fa7b;
+  --interactive-hover:      #8be9fd;
+}

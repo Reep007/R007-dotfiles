@@ -1,0 +1,29 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+configuration {
+  font: "JetBrainsMono Nerd Font 12";
+}
+
+/* center it, fixed width */
+window {
+  location: center;
+  anchor: center;
+  width: 200px;
+  border-radius: 15px;
+  background-color: @foreground;
+}
+
+/* list styling */
+listview {
+  lines: 21;       /* covers values 0,5,…,100 */
+  spacing: 2px;
+  padding: 4px;
+}
+element {
+  padding: 4px;
+  text-color: @foreground;
+}
+element selected.normal {
+  background-color: @color4;
+  text-color: @background;
+}

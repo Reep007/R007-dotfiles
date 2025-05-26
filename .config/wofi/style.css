@@ -1,13 +1,13 @@
-@define-color background #040D19;
-@define-color foreground #a2c4e7;
-@define-color accent #3166A4;
-@define-color urgent #3166A4;
+@define-color background #090303;
+@define-color foreground #bbb6b7;
+@define-color accent #E45B06;
+@define-color urgent #E45B06;
 
 window {
     margin: 20px;
     border: 1px solid @accent;
     border-radius: 25px;
-    background-image: url("file:///home/neo/Wallpaper/wall2.png");
+    background-image: url("file:///home/neo/Wallpaper/wall24.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

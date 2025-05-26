@@ -5,7 +5,7 @@
   rosewater:      #f2d5cf;
   flamingo:       #eebebe;
   pink:           #f4b8e4;
-  mauve:          #ca9ee6;
+  mauve:rgb(37, 59, 184);
   red:            #e78284;
   maroon:         #ea999c;
   peach:          #ef9f76;
@@ -13,10 +13,10 @@
   green:          #a6d189;
   teal:           #81c8be;
   sky:            #99d1db;
-  sapphire:       #85c1dc;
+  sapphire:rgb(90, 167, 202);
   blue:           #8caaee;
   lavender:       #babbf1;
-  text:           #c6d0f5;
+  text:rgb(79, 110, 221);
   subtext1:       #b5bfe2;
   subtext0:       #a5adce;
   overlay2:       #949cbb;

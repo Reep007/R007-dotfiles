@@ -1,56 +1,55 @@
 /* Power menu */
 
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
 configuration {
-  font:                     "JetBrainsMono Nerd Font 8";
+  font: "JetBrainsMono Nerd Font 12";
 }
-
-@theme "~/.config/rofi/theme.rasi"
-
- 
 
 /* Window */
-
 window {
-  location:                 northeast;
-  anchor:                   north;
-  x-offset:                 -3px;
-  y-offset:                 3px;
-  width:                    150px;
-  border:                   2px;
-  border-radius:            10px;
-  border-color:             @select-fg;
-  background-color:         @select-bg;
-  children:                 [ mainbox ];
+  location: northeast;
+  anchor: northeast;
+  x-offset: -20px;
+  y-offset: 20px;
+  width: 220px;
+  border: 1px;
+  border-radius: 25px;
+  border-color: @foreground;
+  background-color: @background;
+  children: [ mainbox ];
 }
 
+/* Main box */
 mainbox {
-  background-color:         inherit;
-  text-color:               @main-fg;
-  children:                 [ listview ];
+  background-color: @background;
+  text-color: @foreground;
+  children: [ listview ];
 }
 
 /* List */
-
 listview {
-  lines:                    6;
-  padding:                  6px;
-  background-color:         inherit;
+  lines: 6;
+  padding: 4px;
+  spacing: 4px;
+  background-color: transparent;
 }
 
+/* Element style */
 element {
-  padding:                  6px;
-  cursor:                   pointer;
-  background-color:         inherit;
-  text-color:               @main-fg;
+  padding: 6px;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: @foreground;
+  text-color: @foreground;
 }
 element selected.normal {
-  border-radius:            6px;
-  background-color:         @select-bg;
-  text-color:               @select-fg;
+  background-color: @color4;
+  text-color: @background;
 }
 element-text {
-  padding:                  0 6px;
-  cursor:                   inherit;
-  background-color:         inherit;
-  text-color:               inherit;
+  padding: 0 6px;
+  cursor: inherit;
+  background-color: transparent;
+  text-color: inherit;
 }

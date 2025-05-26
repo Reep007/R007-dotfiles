@@ -4,7 +4,7 @@
   rosewater:      #f4dbd6;
   flamingo:       #f0c6c6;
   pink:           #f5bde6;
-  mauve:          #c6a0f6;
+  mauve:rgb(26, 29, 187);
   red:            #ed8796;
   maroon:         #ee99a0;
   peach:          #f5a97f;

@@ -324,7 +324,7 @@ pulseaudio,
   background: @color1;
 }
 #pulseaudio:hover {
-  color: @color4;
+  color: @color111;
 }
 
 /* Brightness */
