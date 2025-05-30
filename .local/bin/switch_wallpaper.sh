@@ -136,6 +136,7 @@ echo "$(date): Waybar reloaded" >> "$LOGFILE"
 
 # Update Oh My Posh theme
 ~/bin/update_posh_theme.sh 2>/dev/null
+~/.local/bin/update_posh_theme.sh 2>/dev/null
 echo "$(date): Oh My Posh theme updated" >> "$LOGFILE"
 
 # Update Hyprland borders

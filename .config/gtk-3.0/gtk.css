@@ -1,0 +1,19 @@
+window#wofi #entry:selected {
+    background-color: #2B539D;
+    color: #9fcadb;
+}
+
+window#wofi #text:selected {
+    background-color: transparent;
+    color: #9fcadb;
+}
+
+window#wofi .label:selected {
+    background-color: transparent;
+    color: #9fcadb;
+}
+
+window#wofi *:selected {
+    background-color: transparent;
+    color: #9fcadb;
+}
