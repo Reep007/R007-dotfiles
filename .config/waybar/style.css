@@ -81,6 +81,7 @@ clock,
 #bluetooth,
 #custom-update,      
 #mpris,
+tray,
 pulseaudio,
 #backlight,
 #battery,
@@ -290,6 +291,11 @@ pulseaudio,
 #custom-right5 {
   color: rgba(15, 14, 22, 0.0);
   background: rgba(15, 14, 22, 0.0);
+}
+#tray {
+    background-color: rgba(15, 14, 22, 0.9); /* Matches your bar background */
+    padding: 0 100px;
+    color: @color5; /* Matches your module text color */
 }
 
 /* Media Info */

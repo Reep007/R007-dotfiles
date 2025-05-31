@@ -51,6 +51,8 @@
 
   "modules-right": [
     "mpris",                // media info
+   
+    "tray",                // sys tray  
 
     "custom/left6",
     "pulseaudio",           // output device
@@ -309,6 +311,11 @@
   "tooltip": "Switch Wallpaper",
   "on-click": "~/.local/bin/switch_wallpaper.sh",
   "exec": "echo ''"
+},
+
+"tray": {
+    "icon-size": 16,
+    "spacing": 20
 },
 
   "mpris": {
