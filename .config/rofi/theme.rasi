@@ -1,5 +1,5 @@
 /* Catppuccin Macchiato */
-
+@import "~/.cache/wal/colors-rofi-dark.rasi"
 
 * {
   rosewater:      #f2d5cf;
