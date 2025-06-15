@@ -35,7 +35,7 @@ tooltip {
   border: solid;
   border-width: 1.5px;
   border-radius: 10px;
-  border-color: @color2;
+  border-color: @color4;
 }
 tooltip label {
   color: @color4;
@@ -47,24 +47,24 @@ tooltip label {
 
 #workspaces button {
   color: @color6;
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: none;
-  margin: 1px 0;
-  padding: 0 4px;
+  margin: 1px 2;
+  padding: 1 8px;
   transition: none;
 }
 #workspaces button:hover {
   color: @color6;
-  background: rgba(15, 14, 22, 0.8);
+  background: rgba(15, 14, 22, 0.9);
   text-shadow: none;
 }
 #workspaces button.active {
   color: @foreground;
   background: @color4;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.2);
-  margin: 1px;
-  padding: 0 2px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.4);
+  margin: 0px;
+  padding: 5 2px;
 }
 
 /* <<--< General >-->> */
@@ -87,8 +87,8 @@ pulseaudio,
 #battery,
 #custom-power {
   opacity: 3;
-  color: @color5;
-  padding: 0 10.5px;
+  color: @color6;
+  padding: 0 1.5px;
 }
 
 #custom-left1,
@@ -100,7 +100,7 @@ pulseaudio,
 #custom-left7,
 #custom-left8 {
   margin-bottom: 0;
-  text-shadow: -2px 0 2px rgba(0, 0, 0, 0.0);
+  text-shadow: -2px 0 2px rgba(0, 0, 0, 0.6);
 }
 
 #custom-right1,
@@ -110,7 +110,7 @@ pulseaudio,
 #custom-right5 {
   margin-bottom: 0;
   padding-right: 2px;
-  text-shadow: 3px 0 3px rgba(0, 0, 0, 0.0);
+  text-shadow: 2px 0 2px rgba(0, 0, 0, 0.6);
 }
 
 /* <<--< Modules >-->> */
@@ -145,7 +145,7 @@ pulseaudio,
 /* Temperature */
 
 #custom-paddc {
-  padding-right: 450px;
+  padding-right: 250px;
 }
 #custom-left2 {
   color: rgba(15, 14, 22, 0.0);
@@ -183,7 +183,7 @@ pulseaudio,
 }
 #custom-leftin1 {
   color: @color4;
-  margin-bottom: -1px;
+  margin-bottom: 0px;
 }
 
 /* Distro Icon */
@@ -192,16 +192,16 @@ pulseaudio,
   color: @color3;
   background:   rgba(15, 14, 22, 0.0);
   text-shadow: none;
-  margin-bottom: -1px;
-  padding-left: 4px;
+  margin-bottom: 0px;
+  padding-left: 2px;
 }
 #custom-distro {
   color: rgba(15, 14, 22, 0.9);
   background: @color3;
-  margin: -1 -1px -1px 0;
-  padding: 0 0 0 2px;
+  margin: -0 -0px -0px 0;
+  padding: 0 0 0 4px;
   text-shadow: 0 0 1.5px rgba(0, 0, 0, 9);
-  font-size: 10px;
+  font-size: 14px;
   font-weight: bold;
 }
 #custom-right2 {
@@ -250,8 +250,8 @@ pulseaudio,
 /* Tray */
 
 #custom-network {
-  padding-left: 250px;
-  padding-right: 20px;
+  padding-left: 100px;
+  padding-right: 10px;
   color: @color7;
   background: rgba(15, 14, 22, 0.0);
 }
@@ -260,7 +260,7 @@ pulseaudio,
 }
 
 #bluetooth {
-  padding-right: 20px;
+  padding-right: 10px;
   color: @color4;
   background: rgba(15, 14, 22, 0.0);
 }
@@ -269,7 +269,7 @@ pulseaudio,
 }
 
 #custom-update {
-  padding-right: 40px;
+  padding-right: 20px;
   color: @color4;
   background: rgba(15, 14, 22, 0.0);
 }
@@ -278,8 +278,8 @@ pulseaudio,
 }
 
 #custom-left9 {
-   padding: 0 10px;
-   border-radius: 20px;
+   padding: 0 0px;
+   border-radius: 10px;
    padding-left: 15px;
    color:  @color1;
    background: rgba(15, 14, 22, 0.2);
@@ -294,7 +294,7 @@ pulseaudio,
 }
 #tray {
     background-color: rgba(15, 14, 22, 0.9); /* Matches your bar background */
-    padding: 0 100px;
+    padding: 0 10px;
     color: @color5; /* Matches your module text color */
 }
 
@@ -375,11 +375,11 @@ pulseaudio,
 #custom-power {
   color: @color7;
   background: @color5;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.0);
+  text-shadow: 0 2 4px rgba(0, 0, 0, 0.9);
   box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.0);
-  border-radius: 9.5px;
-  margin: 0px 0px 0px 0;
-  padding: 2 8px 2 10px;
+  border-radius: 7px;
+  margin: 0px 10px 0px 0;
+  padding: 4 4px 4 10px;
 }
 #custom-power:hover {
   color: @color4;
@@ -402,7 +402,7 @@ pulseaudio,
 
 /* workspace icon and buttons, window and media title */
 * {
-  font-size: 11px;
+  font-size: 12.5px;
 }
 
 /* left and right arrows */
@@ -419,14 +419,14 @@ pulseaudio,
 #custom-right3,
 #custom-right4,
 #custom-right5 {
-  font-size: 15.5px;
+  font-size: 22.5px;
 }
 
 /* left and right inverse */
 #custom-leftin1,
 #custom-leftin2,
 #custom-rightin1 {
-  font-size: 15.6px;
+  font-size: 22.5px;
 }
 
 /* distro icon */
@@ -437,7 +437,7 @@ pulseaudio,
 /* distro arrows override */
 #custom-left5,
 #custom-right2 {
-  font-size: 14.5px;
+  font-size: 22.5px;
 }
 
 /*
