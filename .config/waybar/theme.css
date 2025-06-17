@@ -1,6 +1,6 @@
 /* Reep Bar */
 
-@import url("/home/neo/.cache/wal/colors-waybar.css");
+@import url("~/.cache/wal/colors-waybar.css");
 
 
 @define-color foreground #ccd9d8;
