@@ -1,6 +1,6 @@
 /* Catppuccin Mocha */
 
-@import url("file:///home/neo/.cache/wal/colors-waybar.css");
+@import url("~/.cache/wal/colors-waybar.css");
 
 @define-color foreground #ccd9d8;
 @define-color background #0d0d0e;
