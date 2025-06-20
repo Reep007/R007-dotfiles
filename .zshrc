@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-alias reepfetch='/home/neo/reepfetch.sh'
+alias reepfetch='/$HOME/reepfetch.sh'
 
 # Enable command auto-correction
 ENABLE_CORRECTION="true"
