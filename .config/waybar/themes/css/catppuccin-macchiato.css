@@ -1,6 +1,6 @@
 /* Catppuccin Macchiato */
 
-@import url("~/.cache/wal/colors-waybar.css");
+@import url("{HOME}/.cache/wal/colors-waybar.css");
 
 
 @define-color foreground #ccd9d8;
