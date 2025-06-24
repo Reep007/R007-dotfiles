@@ -55,14 +55,32 @@ fi
 # Get system info
 USERNAME=$USER
 UPTIME=$(uptime -p | sed 's/up //')
-DAYS_UP=$(awk '{print int($1/86400) " days"}' /proc/uptime)
-DISTRO=$(lsb_release -ds 2>/dev/null || cat /etc/os-release | grep -Po '(?<=^PRETTY_NAME=")[^"]*')
+
+DAYS=$(awk '{print int($1/86400)}' /proc/uptime)
+if [ "$DAYS" -eq 0 ]; then
+  DAYS_UP="less than 1 day"
+else
+  DAYS_UP="$DAYS days"
+fi
+
+DISTRO=$(lsb_release -ds 2>/dev/null || grep -Po '(?<=^PRETTY_NAME=")[^"]*' /etc/os-release)
 KERNEL=$(uname -r)
 TERMINAL=$TERM
 SHELL=$(basename $SHELL)
-CPU=$(grep "model name" /proc/cpuinfo | head -1 | cut -d ":" -f2- | sed 's/^ *//')
-DISK_USAGE=$(df -h / | awk 'NR==2 {print $3 " / " $2 " (" $5 ")"}')
-MEMORY_USAGE=$(free -h | awk 'NR==2 {print $3 " / " $2 " (" $3/$2*100 "%)"}')
+CPU=$(grep "model name" /proc/cpuinfo | head -1 | cut -d ":" -f2- | sed 's/^[[:space:]]*//')
+
+GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader,nounits | head -n 1)
+GPU_TEMP=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | head -n 1)
+GPU_UTIL=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | head -n 1)
+GPU="$GPU_NAME ($GPU_TEMP°C, $GPU_UTIL%)"
+
+DISK_USAGE=$(df -h /home | awk 'NR==2 {print $3 " / " $2 " (" $5 ")"}')
+
+MEM_USED=$(free -m | awk 'NR==2 {print $3}')
+MEM_TOTAL=$(free -m | awk 'NR==2 {print $2}')
+MEM_PERCENT=$(awk "BEGIN {printf \"%.1f%%\", $MEM_USED/$MEM_TOTAL*100}")
+MEMORY_USAGE="${MEM_USED}MB / ${MEM_TOTAL}MB (${MEM_PERCENT})"
+
 
 # Load Pywal colors
 source "${HOME}/.cache/wal/colors.sh" 2>> "$LOGFILE"
@@ -94,18 +112,18 @@ INFO_BOX="
                          ${BOX_COLOR}╭───────────╮${RESET}
                          ${BOX_COLOR}│${RESET} ${C1} user    ${RESET}${BOX_COLOR}│${RESET} $USERNAME
                          ${BOX_COLOR}│${RESET} ${C2}󰅐 uptime  ${RESET}${BOX_COLOR}│${RESET} $UPTIME
-                         ${BOX_COLOR}│${RESET} ${C3} days up ${RESET}${BOX_COLOR}│${RESET} $DAYS_UP  
+                         ${BOX_COLOR}│${RESET} ${C3} days up ${RESET}${BOX_COLOR}│${RESET} $DAYS_UP
                          ${BOX_COLOR}│${RESET} ${C4} distro  ${RESET}${BOX_COLOR}│${RESET} $DISTRO
                          ${BOX_COLOR}│${RESET} ${C5} kernel  ${RESET}${BOX_COLOR}│${RESET} $KERNEL
                          ${BOX_COLOR}│${RESET} ${C6} term    ${RESET}${BOX_COLOR}│${RESET} $TERMINAL
                          ${BOX_COLOR}│${RESET} ${C7} shell   ${RESET}${BOX_COLOR}│${RESET} $SHELL
                          ${BOX_COLOR}│${RESET} ${C1}󰍛 cpu     ${RESET}${BOX_COLOR}│${RESET} $CPU
-                         ${BOX_COLOR}│${RESET} ${C2}󰉉 disk    ${RESET}${BOX_COLOR}│${RESET} $DISK_USAGE
-                         ${BOX_COLOR}│${RESET} ${C3} memory  ${RESET}${BOX_COLOR}│${RESET} $MEMORY_USAGE
+                         ${BOX_COLOR}│${RESET} ${C2}󰘚 gpu     ${RESET}${BOX_COLOR}│${RESET} $GPU
+                         ${BOX_COLOR}│${RESET} ${C3}󰉉 disk    ${RESET}${BOX_COLOR}│${RESET} $DISK_USAGE
+                         ${BOX_COLOR}│${RESET} ${C4} memory  ${RESET}${BOX_COLOR}│${RESET} $MEMORY_USAGE
                          ${BOX_COLOR}├───────────┤${RESET}
-                         ${BOX_COLOR}│${RESET} ${C4} colors  ${RESET}${BOX_COLOR}│${RESET} ${C1}● ${C2}● ${C3}● ${C4}● ${C5}● ${C6}● ${RESET}
-                         ${BOX_COLOR}╰───────────╯${RESET}
-"
+                         ${BOX_COLOR}│${RESET} ${C5} colors  ${RESET}${BOX_COLOR}│${RESET} ${C1}● ${C2}● ${C3}● ${C4}● ${C5}● ${C6}● ${C7}●
+                         ${BOX_COLOR}╰───────────╯${RESET}"
 
 # Adjust position of system info box
 tput cup 2 0  # Move cursor to row 2, column 0 for system info

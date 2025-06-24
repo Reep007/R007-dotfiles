@@ -1,0 +1,22 @@
+# Solid TTY-style theme with solid background
+
+bg=#000000
+main_bg=#000000
+title=#ffffff
+hi_fg=#ffffff
+fg=#aaaaaa
+dim_fg=#555555
+selected_bg=#444444
+inactive_fg=#888888
+proc_misc=#ffffff
+proc_cpu=#00ff00
+proc_mem=#00ffff
+proc_pid=#ffff00
+proc_user=#ff00ff
+proc_command=#ffffff
+cpu_box=#00ff00
+mem_box=#00ffff
+net_box=#ff00ff
+proc_box=#ffffff
+div_line=#444444
+temp_color=#ff8800
