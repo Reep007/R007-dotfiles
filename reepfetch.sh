@@ -56,11 +56,29 @@ fi
 USERNAME=$USER
 UPTIME=$(uptime -p | sed 's/up //')
 
-DAYS=$(awk '{print int($1/86400)}' /proc/uptime)
-if [ "$DAYS" -eq 0 ]; then
-  DAYS_UP="less than 1 day"
+# Calculate days since OS installation
+INSTALL_TIMESTAMP=$(stat -c %Y / 2>/dev/null || echo 0)
+CURRENT_TIMESTAMP=$(date +%s)
+if [ "$INSTALL_TIMESTAMP" -eq 0 ]; then
+  DAYS_UP="unknown (could not determine install date)"
+elif [ "$CURRENT_TIMESTAMP" -lt "$INSTALL_TIMESTAMP" ]; then
+  DAYS_UP="error (install date in future)"
 else
-  DAYS_UP="$DAYS days"
+  SECONDS_SINCE_INSTALL=$((CURRENT_TIMESTAMP - INSTALL_TIMESTAMP))
+  DAYS=$((SECONDS_SINCE_INSTALL / 86400))
+  if [ "$DAYS" -eq 0 ]; then
+    DAYS_UP="less than 1 day"
+  elif [ "$DAYS" -lt 365 ]; then
+    DAYS_UP="$DAYS days"
+  else
+    YEARS=$((DAYS / 365))
+    REMAINING_DAYS=$((DAYS % 365))
+    if [ "$YEARS" -eq 1 ]; then
+      DAYS_UP="$YEARS year $REMAINING_DAYS days"
+    else
+      DAYS_UP="$YEARS years $REMAINING_DAYS days"
+    fi
+  fi
 fi
 
 DISTRO=$(lsb_release -ds 2>/dev/null || grep -Po '(?<=^PRETTY_NAME=")[^"]*' /etc/os-release)
@@ -81,12 +99,11 @@ MEM_TOTAL=$(free -m | awk 'NR==2 {print $2}')
 MEM_PERCENT=$(awk "BEGIN {printf \"%.1f%%\", $MEM_USED/$MEM_TOTAL*100}")
 MEMORY_USAGE="${MEM_USED}MB / ${MEM_TOTAL}MB (${MEM_PERCENT})"
 
-
 # Load Pywal colors
 source "${HOME}/.cache/wal/colors.sh" 2>> "$LOGFILE"
 
-# Set a static color for the box (adjust as needed)
-BOX_COLOR="\e[37m"  # White (change if needed)
+# Set a static color for the box
+BOX_COLOR="\e[37m"  # White
 RESET="\e[0m"       # Reset color
 
 # Convert Hex to RGB ANSI for Truecolor Terminals
