@@ -1,0 +1,8 @@
+{
+  "accentColor": "#3561e3",
+  "cssTheme": "pywal",
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "pywal"
+  ]
+}
