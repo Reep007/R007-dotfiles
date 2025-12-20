@@ -1,3 +1,6 @@
+<img width="2564" height="1441" alt="image" src="https://github.com/user-attachments/assets/b849c77f-6c0b-4f81-a619-fa2c9f518421" />
+
+
 
 ## Dependencies
 hyprland waybar hyprpaper python xdg-desktop-portal-hyprland zsh zsh-completions python-pillow python tk \
